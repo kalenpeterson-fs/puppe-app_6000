@@ -6,19 +6,43 @@ metadata :name        => 'deploy',
          :url         => 'https://github.com/kalenpeterson-fs/puppe-app_6000',
          :timeout     => 60
 
-action 'echo', :description => 'Echos back any message it receives' do
+action 'deploycode', :description => 'Deploy the app_6000 code' do
     display :always
 
-    input :msg,
-          :prompt      => 'Message',
-          :description => 'Your message',
+    input :hostname,
+          :prompt      => 'Hostname',
+          :description => 'Hostname of Builder_5000',
           :type        => :string,
           :validation  => '.*',
           :optional    => false,
           :maxlength   => 1024
 
-    output :msg,
-        :description => 'Your message',
-        :display_as  => 'Message',
-        :default     => ''
+    input :codebase,
+          :prompt      => 'Codebase',
+          :description => 'Codebase Name to Deploy',
+          :type        => :string,
+          :validation  => '.*',
+          :optional    => false,
+          :maxlength   => 1024
+
+    input :codeversion,
+          :prompt      => 'CodeVersion',
+          :description => 'Version of Code to Deploy',
+          :type        => :string,
+          :validation  => '.*',
+          :optional    => false,
+          :maxlength   => 1024
+
+    input :localcodedir,
+          :prompt      => 'LocalCodeDir',
+          :description => 'Local Directory to Deploy Code to',
+          :type        => :string,
+          :validation  => '.*',
+          :optional    => false,
+          :maxlength   => 1024
+
+    output :result,
+            :description => 'The Deploy Result',
+            :display_as  => 'DeployResult',
+            :default     => ''
 end

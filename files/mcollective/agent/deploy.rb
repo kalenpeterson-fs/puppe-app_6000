@@ -2,12 +2,7 @@ module MCollective
   module Agent
     class Deploy<RPC::Agent
 
-      action "echo" do
-        validate :msg, String
-        reply[:msg] = request[:msg]
-      end
-
-      action "deploy" do
+      action "deploycode" do
         validate :hostname, String
         hostname = request[:hostname]
 
@@ -20,11 +15,13 @@ module MCollective
         validate :localcodedir, String
         localcodedir = request[:localcodedir]
 
-        reply[:status] = run(
-          "builder_5000_client #{hostname} #{codebase} #{codeversion} #{localcodedir}",
-          :stdout => :out,
-          :stderr => :err
-        )
+        reply[:result] = "Deployed #{codebase} v#{codeversion} from #{hostname} to #{localcodedir}"
+
+        #reply[:status] = run(
+        #  "builder_5000_client #{hostname} #{codebase} #{codeversion} #{localcodedir}",
+        #  :stdout => :out,
+        #  :stderr => :err
+        #)
       end
     end
   end
