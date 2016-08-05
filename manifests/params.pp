@@ -7,7 +7,7 @@ class app_6000::params {
         $mcoLibDir = '/opt/puppetlabs/mcollective/plugins'
       }
       'Debian': {
-        $mcoLibDir = '/usr/share/mcollective/plugins'
+        $mcoLibDir = '/opt/puppetlabs/mcollective/plugins'
       }
       'windows': {
         $mcoLibDir = "${::env_windows_installdir}/mcollective/lib"
