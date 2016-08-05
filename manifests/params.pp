@@ -4,7 +4,7 @@ class app_6000::params {
 
   case $::osfamily {
       'RedHat': {
-        $mcoLibDir = '/usr/libexec/mcollective'
+        $mcoLibDir = '/opt/puppetlabs/mcollective/plugins'
       }
       'Debian': {
         $mcoLibDir = '/usr/share/mcollective/plugins'
