@@ -1,6 +1,6 @@
 module MCollective
   module Agent
-    class deploy<RPC::Agent
+    class Deploy<RPC::Agent
 
       action "echo" do
         validate :msg, String
