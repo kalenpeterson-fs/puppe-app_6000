@@ -25,14 +25,26 @@ class MCollective::Application::Deploy<MCollective::Application
          :required       => true
 
    def main
-      mc = rpcclient("deploy")
+      deployclient = rpcclient("deploy")
+      puppetclient = rpcclient("puppet")
 
-      printrpc mc.deploycode(
+      # Stop the application
+      printrpc puppetclient.resource(
+        :name       => 'app_6000',
+        :type       => 'service',
+        :properties => 'ensure=stopped'
+      )
+
+      # Deploy New Code
+      printrpc deployclient.deploycode(
         :hostname     => configuration[:hostname],
         :codebase     => configuration[:codebase],
         :codeversion  => configuration[:codeversion],
         :localcodedir => configuration[:localcodedir]
       )
+
+      # Invoke a puppet run
+      printrpc puppetclient.runonce()
 
       printrpcstats
    end
