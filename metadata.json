@@ -1,0 +1,15 @@
+{
+  "name": "kpeterson-app_6000",
+  "version": "0.1.0",
+  "author": "kpeterson",
+  "summary": "Install and manage app_6000",
+  "license": "Apache-2.0",
+  "source": "https://github.com/kalenpeterson-fs/puppe-app_6000",
+  "project_page": "https://github.com/kalenpeterson-fs/puppe-app_6000",
+  "issues_url": "https://github.com/kalenpeterson-fs/puppe-app_6000/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+
