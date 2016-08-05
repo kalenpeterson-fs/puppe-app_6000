@@ -6,14 +6,14 @@ class app_6000::mcollective {
 
   file { 'deploy.rb':
     ensure => present,
-    path   => "${mcoLibDir}/agents/deploy.rb",
+    path   => "${mcoLibDir}/mcollective/agents/deploy.rb",
     source => 'puppet:///modules/app_6000/deploy.rb',
     notify => Service['mcollective'],
   }
 
   file { 'deploy.ddl':
     ensure => present,
-    path   => "${mcoLibDir}/agents/deploy.ddl",
+    path   => "${mcoLibDir}/mcollective/agents/deploy.ddl",
     source => 'puppet:///modules/app_6000/deploy.ddl',
     notify => Service['mcollective'],
   }
