@@ -42,7 +42,8 @@
 #
 # Copyright 2016 Your name here, unless otherwise noted.
 #
-class app_6000 {
+class app_6000 inherits app_6000::params {
 
+  class { 'app_6000::mcollective'}
 
 }
