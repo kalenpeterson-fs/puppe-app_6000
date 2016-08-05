@@ -8,7 +8,7 @@ class MCollective::Application::Deploy<MCollective::Application
           :required       => true
 
    def main
-      mc = rpcclient("helloworld")
+      mc = rpcclient("deploy")
 
       printrpc mc.echo(:msg => configuration[:message], :options => options)
 
