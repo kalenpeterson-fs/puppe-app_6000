@@ -4,7 +4,7 @@ class app_6000::mcollective {
 
   $mcoLibDir = $::app_6000::params::mcoLibDir
 
-  # Manage the Deploy MCO Agent
+  # Manage the Deploy MCO Agent ruby file
   file { 'agent_deploy.rb':
     ensure => present,
     path   => "${mcoLibDir}/mcollective/agent/deploy.rb",
@@ -12,6 +12,7 @@ class app_6000::mcollective {
     notify => Service['mcollective'],
   }
 
+  # Manage the Deploy MCO Agent ddl file
   file { 'agent_deploy.ddl':
     ensure => present,
     path   => "${mcoLibDir}/mcollective/agent/deploy.ddl",

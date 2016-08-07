@@ -21,7 +21,7 @@ action 'deploycode', :description => 'Deploy the app_6000 code' do
           :prompt      => 'Codebase',
           :description => 'Codebase Name to Deploy',
           :type        => :string,
-          :validation  => '.*',
+          :validation  => 'codebase_7000',
           :optional    => false,
           :maxlength   => 1024
 
@@ -29,7 +29,7 @@ action 'deploycode', :description => 'Deploy the app_6000 code' do
           :prompt      => 'CodeVersion',
           :description => 'Version of Code to Deploy',
           :type        => :string,
-          :validation  => '.*',
+          :validation  => '^((\blatest\b)|(\d+))$',
           :optional    => false,
           :maxlength   => 1024
 

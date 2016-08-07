@@ -25,14 +25,13 @@ class MCollective::Application::Deploy<MCollective::Application
          :required       => true
 
    def main
-      deployclient = rpcclient("deploy")
-      puppetclient = rpcclient("puppet")
+      deployclient  = rpcclient("deploy")
+      puppetclient  = rpcclient("puppet")
+      serviceclient = rpcclient("service")
 
       # Stop the application
-      printrpc puppetclient.resource(
-        :name       => 'app_6000',
-        :type       => 'service',
-        :properties => 'ensure=stopped'
+      printrpc serviceclient.stop(
+        :service => 'app_6000'
       )
 
       # Deploy New Code
@@ -43,8 +42,13 @@ class MCollective::Application::Deploy<MCollective::Application
         :localcodedir => configuration[:localcodedir]
       )
 
+      # Start the Application
+      printrpc serviceclient.start(
+        :service => 'app_6000'
+      )
+
       # Invoke a puppet run
-      printrpc puppetclient.runonce()
+      #printrpc puppetclient.runonce()
 
       printrpcstats
    end
