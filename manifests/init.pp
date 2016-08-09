@@ -44,6 +44,4 @@
 #
 class app_6000 inherits app_6000::params {
 
-  class { '::app_6000::mcollective': }
-  
 }
